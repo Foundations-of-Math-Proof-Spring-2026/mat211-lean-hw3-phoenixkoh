@@ -38,23 +38,23 @@ example {u v x y A B : ℝ} (h1 : 0 < A) (h2 : A ≤ 1) (h3 : 1 ≤ B) (h4 : x �
     u * y + v * x + u * v < 3 * A * B :=
   calc
     u * y + v * x + u * v
-      ≤ u * B + v * B + u * v := by sorry
-    _ ≤ A * B + A * B + A * v := by sorry
-    _ ≤ A * B + A * B + 1 * v := by sorry
-    _ ≤ A * B + A * B + B * v := by sorry
-    _ < A * B + A * B + B * A := by sorry
-    _ = 3 * A * B := by sorry
+      ≤ u * B + v * B + u * v := by rw[h5,h4]
+    _ ≤ A * B + A * B + A * v := by rw[h8,h9]
+    _ ≤ A * B + A * B + 1 * v := by rw[h2]
+    _ ≤ A * B + A * B + B * v := by rw[h3]
+    _ < A * B + A * B + B * A := by rw[h9]
+    _ = 3 * A * B := by ring
 
 -- Example 1.4.5
 -- Exercise: replace the words "sorry" with the correct Lean justification.
 example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
   calc
     t ^ 2 - 3 * t - 17
-      = t * t - 3 * t - 17 := by sorry
-    _ ≥ 10 * t - 3 * t - 17 := by sorry
-    _ = 7 * t - 17 := by sorry
-    _ ≥ 7 * 10 - 17 := by sorry
-    _ ≥ 5 := by sorry
+      = t * t - 3 * t - 17 := by ring
+    _ ≥ 10 * t - 3 * t - 17 := by rw[ht]
+    _ = 7 * t - 17 := by ring
+    _ ≥ 7 * 10 - 17 := by rw[ht]
+    _ ≥ 5 := by ring
 
 
 -- Example 1.4.6
