@@ -64,7 +64,14 @@ example {t : ℚ} (ht : t ≥ 10) : t ^ 2 - 3 * t - 17 ≥ 5 :=
 -- Example 1.4.6
 -- Exercise: type out the whole proof printed in the text as a Lean proof.
 example {n : ℤ} (hn : n ≥ 5) : n ^ 2 > 2 * n + 11 :=
-  sorry
+  calc
+    n ^ 2
+    _ = n * n := by ring
+    _ >= 5 * n := by rel [hn]
+    _ = 2 * n + 3 * n := by ring
+    _ >= 2 * n + 3 * 5 := by rel [hn]
+    _ = 2 * n + 11 + 4 := by ring
+    _ > 2 * n + 11 := by extra
 
 /-
 This one is here just because as the first example using the tactic "extra"
