@@ -89,10 +89,10 @@ example {m n : ℤ} (h : m ^ 2 + n ≤ 2) : n ≤ 2 :=
 -- Exercise: replace the words "sorry" with the correct Lean justification.
 example {x y : ℝ} (h : x ^ 2 + y ^ 2 ≤ 1) : (x + y) ^ 2 < 3 :=
   calc
-    (x + y) ^ 2 ≤ (x + y) ^ 2 + (x - y) ^ 2 := by sorry
-    _ = 2 * (x ^ 2 + y ^ 2) := by sorry
-    _ ≤ 2 * 1 := by sorry
-    _ < 3 := by sorry
+    (x + y) ^ 2 ≤ (x + y) ^ 2 + (x - y) ^ 2 := by extra
+    _ = 2 * (x ^ 2 + y ^ 2) := by ring
+    _ ≤ 2 * 1 := by rel [h]
+    _ < 3 := by numbers
 
 
 -- Example 1.4.9
@@ -101,12 +101,12 @@ example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
     3 * a * b + a ≤ 7 * b + 72 :=
   calc
     3 * a * b + a
-      ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by sorry
-    _ = 2 * ((a + b) * b) + (a + b) * a + a := by sorry
-    _ ≤ 2 * (8 * b) + 8 * a + a := by sorry
-    _ = 7 * b + 9 * (a + b) := by sorry
-    _ ≤ 7 * b + 9 * 8 := by sorry
-    _ = 7 * b + 72 := by sorry
+      ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by rel [h2]
+    _ = 2 * ((a + b) * b) + (a + b) * a + a := by ring
+    _ ≤ 2 * (8 * b) + 8 * a + a := by rel [h3]
+    _ = 7 * b + 9 * (a + b) := by ring
+    _ ≤ 7 * b + 9 * 8 := by rw [h3]
+    _ = 7 * b + 72 := by numbers
 
 
 /-
