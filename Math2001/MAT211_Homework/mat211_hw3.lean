@@ -165,4 +165,8 @@ example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 :=
 
 /- Exercise #4 -/
 example (a b : ℝ) : a ^ 2 + b ^ 2 ≥ 2 * a * b :=
-  sorry
+  calc
+    a ^ 2 + b ^ 2
+     = (a - b) ^ 2 + 2 * a * b := by ring
+    _ ≥ 0 + 2 * a * b := by extra
+    _ ≥ 2 * a * b := by extra
