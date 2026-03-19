@@ -101,12 +101,12 @@ example {a b : ℚ} (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a + b ≤ 8) :
     3 * a * b + a ≤ 7 * b + 72 :=
   calc
     3 * a * b + a
-      ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by rel [h2]
+      ≤ 2 * b ^ 2 + a ^ 2 + (3 * a * b + a) := by extra
     _ = 2 * ((a + b) * b) + (a + b) * a + a := by ring
     _ ≤ 2 * (8 * b) + 8 * a + a := by rel [h3]
     _ = 7 * b + 9 * (a + b) := by ring
-    _ ≤ 7 * b + 9 * 8 := by rw [h3]
-    _ = 7 * b + 72 := by numbers
+    _ ≤ 7 * b + 9 * 8 := by rel [h3]
+    _ = 7 * b + 72 := by ring
 
 
 /-
