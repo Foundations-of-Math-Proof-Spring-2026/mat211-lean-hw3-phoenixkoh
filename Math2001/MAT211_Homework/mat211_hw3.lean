@@ -141,7 +141,14 @@ example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 :=
 
 /- Exercise #2 -/
 example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 :=
-  sorry
+  calc
+    n ^ 4 - 2 * n ^ 2
+     = n ^ 4 - 3 * n ^ 3 - 2 * n ^ 2 + 3 * n ^ 3 := by ring
+    _ = n ^ 2 * (n ^ 2 - 3 * n - 2) + 3 * n ^ 3 := by ring
+    _ = n ^ 2 * (( n + 7) * (n - 10) + 68) + 3 * n ^ 3 := by ring
+    _ ≥ 10 ^ 2 * ((10 + 7) * (10 - 10) + 68) + 3 * n ^ 3 := by rel[hn]
+    _ = 100 * (17 * 0 + 68) + 3 * n ^ 3 := by ring
+    _ > 3 * n ^ 3 := by extra
 
 
 /- Exercise #3 -/
