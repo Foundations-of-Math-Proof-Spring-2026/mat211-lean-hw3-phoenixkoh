@@ -132,7 +132,11 @@ up in Lean. -/
 
 /- Exercise #1 -/
 example {a b : ℚ} (h1 : 3 ≤ a) (h2 : a + 2 * b ≥ 4) : a + b ≥ 3 :=
-  sorry
+  calc
+    a + b
+     = 1/2 * a + 1/2 * (a + 2 * b) := by ring
+    _ ≥ 1/2 * 3 + 1/2 * (4) := by rel [h1,h2]
+    _ ≥  3 := by numbers
 
 
 /- Exercise #2 -/
