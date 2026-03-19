@@ -153,7 +153,14 @@ example {n : ℤ} (hn : n ≥ 10) : n ^ 4 - 2 * n ^ 2 > 3 * n ^ 3 :=
 
 /- Exercise #3 -/
 example {n : ℤ} (h1 : n ≥ 5) : n ^ 2 - 2 * n + 3 > 14 :=
-  sorry
+  calc
+    n ^ 2 - 2 * n + 3
+     = n * n - 2 * n + 3 := by ring
+    _ ≥ 5 * n - 2 * n + 3 := by rel[h1]
+    _ = 3 * n + 3 := by ring
+    _ ≥ 3 * 5 + 3 := by rel[h1]
+    _ ≥ 15 + 3 := by numbers
+    _ > 14 := by numbers
 
 
 /- Exercise #4 -/
